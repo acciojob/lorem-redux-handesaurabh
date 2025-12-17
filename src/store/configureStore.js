@@ -11,6 +11,4 @@ const store = createStore(
   applyMiddleware(thunk)
 );
 
-console.log('Redux store created:', store);
-
 export default store;
