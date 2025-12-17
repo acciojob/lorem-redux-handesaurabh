@@ -32,9 +32,21 @@ export const fetchLoremData = () => {
   return async (dispatch) => {
     console.log('fetchLoremData action called');
     dispatch(fetchLoremRequest());
+    
+    // Add a small delay to ensure UI updates properly
+    await new Promise(resolve => setTimeout(resolve, 100));
+    
     try {
       console.log('Attempting to fetch from API');
-      const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
+      
+      const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+        signal: controller.signal
+      });
+      
+      clearTimeout(timeoutId);
+      
       console.log('API response:', response);
       if (!response.ok) {
         // If API is not available, use mock data
@@ -56,8 +68,8 @@ export const fetchLoremData = () => {
         body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
       }];
       console.log('Using mock data:', mockData);
-      // Dispatch mock data immediately
-      console.log('Dispatching mock data');
+      // Add a small delay before dispatching mock data
+      await new Promise(resolve => setTimeout(resolve, 100));
       dispatch(fetchLoremSuccess(mockData));
     }
   };
