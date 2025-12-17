@@ -2,8 +2,10 @@ import "regenerator-runtime/runtime";
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import App from "./components/App.js";
-import store from "./store/configureStore.js";
+import App from "./components/App";
+import store from "./store/configureStore";
+
+console.log('Redux store:', store);
 
 ReactDOM.render(
   <Provider store={store}>
