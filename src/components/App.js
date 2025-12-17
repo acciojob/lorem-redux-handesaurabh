@@ -14,7 +14,7 @@ const App = () => {
     // Small delay to ensure component is mounted
     const timer = setTimeout(() => {
       dispatch(fetchLoremData());
-    }, 100);
+    }, 200);
 
     return () => clearTimeout(timer);
   }, [dispatch]);
@@ -34,6 +34,13 @@ const App = () => {
             <div className="body" data-testid="post-body">Body :{post.body}</div>
           </li>
         ))}
+        {/* Fallback for when data is empty but loading is false */}
+        {!loading && data && data.length === 0 && (
+          <li className="grid-item" style={{ textAlign: 'center', color: '#888' }}>
+            <div className="title">No data available</div>
+            <div className="body">Please try again later</div>
+          </li>
+        )}
       </ul>
     </div>
   );

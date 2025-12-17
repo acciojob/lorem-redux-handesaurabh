@@ -39,7 +39,11 @@ export const fetchLoremData = () => {
       const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
       
       const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
-        signal: controller.signal
+        signal: controller.signal,
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
       });
       
       clearTimeout(timeoutId);
@@ -65,6 +69,8 @@ export const fetchLoremData = () => {
         body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
       }];
       console.log('Using mock data:', mockData);
+      // Small delay to ensure state updates properly
+      await new Promise(resolve => setTimeout(resolve, 100));
       dispatch(fetchLoremSuccess(mockData));
     }
   };
