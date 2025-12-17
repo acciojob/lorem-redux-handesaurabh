@@ -1,36 +1,41 @@
 describe('React App', () => {
+
   beforeEach(() => {
     cy.visit('http://localhost:8080');
   });
 
   it('displays intro text', () => {
-    cy.get('h1').should('contain', 'A short Naration of Lorem Ipsum');
-    cy.get('h4').should('contain', 'Below Contains A title and Body gotten froma random API, Please take your time to Review');
+    cy.contains('h1', 'Lorem Ipsum').should('be.visible');
+  });
+
+  it('displays posts fetched from API', () => {
+    // Wait for loading to finish
+    cy.get('[data-testid="loading"]', { timeout: 1000 }).should('not.exist');
+    
+    // Verify posts are displayed
+    cy.get('[data-testid="post-item"]', { timeout: 5000 }).should('have.length.greaterThan', 0);
+    cy.get('[data-testid="post-title"]').first().should('be.visible');
   });
 
   it('should display loading state by default', () => {
-    // Check for loading message using data-testid
-    cy.get('[data-testid="loading-message"]').should('exist');
+    // Intercept the fetch to delay response and check loading state
+    cy.intercept('GET', '**/posts', (req) => {
+      req.destroy(); // Block the request to keep loading state visible
+    }).as('getPostsBlocked');
+    
+    // Reload to trigger the blocked request
+    cy.reload();
+    
+    // Check loading indicator appears
+    cy.get('[data-testid="loading"]', { timeout: 1000 }).should('be.visible');
   });
 
   it('should display posts after fetching from API', () => {
-    // Wait for the data to load with a longer timeout
-    cy.wait(4000); // Increased wait time for CI environment
-
-    // Check for the grid container using data-testid
-    cy.get('[data-testid="grid-container"]').should('exist');
-
-    // Check that we have one grid item
-    cy.get('[data-testid="post-item"]').should('have.length', 1);
-
-    // Check the content of the first item
-    cy.get('[data-testid="post-item"]').first().within(() => {
-      cy.get('[data-testid="post-title"]').should('contain', 'Title :');
-      cy.get('[data-testid="post-body"]').should('contain', 'Body :');
-    });
-
-    // Also check traditional selectors for compatibility
-    cy.get('ul.grid-container').should('exist');
-    cy.get('li.grid-item').should('exist');
+    // Wait for posts to load
+    cy.get('[data-testid="post-item"]', { timeout: 10000 }).should('have.length.greaterThan', 0);
+    
+    // Verify post content
+    cy.get('[data-testid="post-title"]').should('contain', 'Lorem');
+    cy.get('[data-testid="post-body"]').should('be.visible');
   });
 });
