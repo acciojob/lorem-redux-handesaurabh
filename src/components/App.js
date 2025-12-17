@@ -28,7 +28,7 @@ const App = () => {
       <ul className="grid-container" data-testid="grid-container">
         {loading && <li className="grid-item" style={{ textAlign: 'center', color: '#888', fontStyle: 'italic' }} data-testid="loading-message">Fetching data...</li>}
         {error && <li className="grid-item" style={{ color: 'red', textAlign: 'center' }} data-testid="error-message">{error}</li>}
-        {data.map((post, index) => (
+        {data && data.length > 0 && data.map((post, index) => (
           <li key={index} className="grid-item" data-testid="post-item">
             <div className="title" data-testid="post-title">Title :{post.title}</div>
             <div className="body" data-testid="post-body">Body :{post.body}</div>

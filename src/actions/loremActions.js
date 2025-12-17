@@ -33,9 +33,6 @@ export const fetchLoremData = () => {
     console.log('fetchLoremData action called');
     dispatch(fetchLoremRequest());
     
-    // Add a small delay to ensure UI updates properly
-    await new Promise(resolve => setTimeout(resolve, 100));
-    
     try {
       console.log('Attempting to fetch from API');
       const controller = new AbortController();
@@ -68,8 +65,6 @@ export const fetchLoremData = () => {
         body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
       }];
       console.log('Using mock data:', mockData);
-      // Add a small delay before dispatching mock data
-      await new Promise(resolve => setTimeout(resolve, 100));
       dispatch(fetchLoremSuccess(mockData));
     }
   };

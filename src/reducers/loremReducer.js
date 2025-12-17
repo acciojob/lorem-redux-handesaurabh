@@ -7,32 +7,32 @@ const initialState = {
 };
 
 const loremReducer = (state = initialState, action) => {
-  console.log('Reducer called with:', { state, action });
+  // console.log('Reducer called with:', { state, action });
 
   switch (action.type) {
     case FETCH_LOREM_REQUEST:
-      console.log('Handling FETCH_LOREM_REQUEST');
+      // console.log('Handling FETCH_LOREM_REQUEST');
       return {
         ...state,
         loading: true,
         error: ''
       };
     case FETCH_LOREM_SUCCESS:
-      console.log('Handling FETCH_LOREM_SUCCESS with payload:', action.payload);
+      // console.log('Handling FETCH_LOREM_SUCCESS with payload:', action.payload);
       // Ensure data has the correct structure
       return {
         ...state,
         loading: false,
-        data: action.payload,
+        data: Array.isArray(action.payload) ? action.payload : [],
         error: ''
       };
     case FETCH_LOREM_FAILURE:
-      console.log('Handling FETCH_LOREM_FAILURE with payload:', action.payload);
+      // console.log('Handling FETCH_LOREM_FAILURE with payload:', action.payload);
       return {
         ...state,
         loading: false,
         data: [],
-        error: action.payload
+        error: action.payload || 'Failed to fetch data'
       };
     default:
       return state;
