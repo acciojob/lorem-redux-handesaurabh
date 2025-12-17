@@ -22,21 +22,19 @@ const App = () => {
   return (
     <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '20px' }}>
       <h1 style={{ color: '#333', textAlign: 'center', marginBottom: '10px' }}>A short Naration of Lorem Ipsum</h1>
-      <h3 style={{ color: '#555', textAlign: 'center', marginBottom: '30px', fontWeight: 'normal' }}>
+      <h4 style={{ color: '#555', textAlign: 'center', marginBottom: '30px', fontWeight: 'normal' }}>
         Below Contains A title and Body gotten from a random API, Please take your time to Review
-      </h3>
-      <div>
-        {loading && <h4 style={{ textAlign: 'center', color: '#888', fontStyle: 'italic' }}>Fetching data...</h4>}
-        {error && <p style={{ color: '#d32f2f', textAlign: 'center', padding: '10px', backgroundColor: '#ffebee', borderRadius: '4px' }}>Error: {error}</p>}
-        <div className="grid-container">
-          {data.map((post, index) => (
-            <div key={index} className="grid-item">
-              <div className="title">Title : {post.title}</div>
-              <div className="body">Body : {post.body}</div>
-            </div>
-          ))}
-        </div>
-      </div>
+      </h4>
+      {loading && <div style={{ textAlign: 'center', color: '#888', fontStyle: 'italic' }}>Fetching data...</div>}
+      {error && <div style={{ color: 'red', textAlign: 'center' }}>{error}</div>}
+      <ul className="grid-container">
+        {data.map((post, index) => (
+          <li key={index} className="grid-item">
+            <div className="title">Title : {post.title}</div>
+            <div className="body">Body : {post.body}</div>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
