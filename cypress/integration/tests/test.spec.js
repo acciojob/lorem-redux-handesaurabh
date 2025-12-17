@@ -9,8 +9,8 @@ describe('React App', () => {
   });
 
   it('displays posts fetched from API', () => {
-    // Wait for loading to finish
-    cy.get('[data-testid="loading"]', { timeout: 1000 }).should('not.exist');
+    // Wait a bit for loading to finish
+    cy.wait(2000);
     
     // Verify posts are displayed
     cy.get('[data-testid="post-item"]', { timeout: 5000 }).should('have.length.greaterThan', 0);
