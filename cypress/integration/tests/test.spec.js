@@ -5,16 +5,16 @@ describe('React App', () => {
   });
 
   it('displays intro text', () => {
-    cy.contains('h1', 'Lorem Ipsum').should('be.visible');
+    cy.get('h1').should('contain', 'A short Naration of Lorem Ipsum');
   });
 
   it('displays posts fetched from API', () => {
-    // Wait a bit for loading to finish
-    cy.wait(2000);
+    // Wait for loading to finish
+    cy.get('[data-testid="loading"]', { timeout: 1000 }).should('not.exist');
     
     // Verify posts are displayed
     cy.get('[data-testid="post-item"]', { timeout: 5000 }).should('have.length.greaterThan', 0);
-    cy.get('[data-testid="post-title"]').first().should('be.visible');
+    cy.get('.title').first().should('be.visible');
   });
 
   it('should display loading state by default', () => {
@@ -35,7 +35,7 @@ describe('React App', () => {
     cy.get('[data-testid="post-item"]', { timeout: 10000 }).should('have.length.greaterThan', 0);
     
     // Verify post content is visible
-    cy.get('[data-testid="post-title"]').should('be.visible');
-    cy.get('[data-testid="post-body"]').should('be.visible');
+    cy.get('.title').should('be.visible');
+    cy.get('.body').should('be.visible');
   });
 });

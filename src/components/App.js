@@ -1,40 +1,38 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchLoremData } from "../actions/loremActions";
+import React, { useEffect } from 'react';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchLoremData } from '../actions/loremActions';
 
 const App = () => {
   const dispatch = useDispatch();
-  // Simplify state handling
-  const loremState = useSelector(state => state.lorem);
-  const loading = loremState?.loading || false;
-  const data = loremState?.data || [];
-  const error = loremState?.error || '';
+  const { loading, data, error } = useSelector(state => state.lorem);
 
   useEffect(() => {
-    // Small delay to ensure component is mounted
-    const timer = setTimeout(() => {
-      dispatch(fetchLoremData());
-    }, 200);
-
-    return () => clearTimeout(timer);
+    dispatch(fetchLoremData());
   }, [dispatch]);
 
   return (
-    <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '20px' }}>
-      <h1 style={{ color: '#333', textAlign: 'center', marginBottom: '10px' }}>Lorem Ipsum</h1>
-      <h4 style={{ color: '#555', textAlign: 'center', marginBottom: '30px', fontWeight: 'normal' }}>
-        Below Contains A title and Body gotten froma random API, Please take your time to Review
-      </h4>
-      <ul className="grid-container" data-testid="grid-container">
-        {loading && <li className="grid-item" style={{ textAlign: 'center', color: '#888', fontStyle: 'italic' }} data-testid="loading">Fetching data...</li>}
-        {error && <li className="grid-item" style={{ color: 'red', textAlign: 'center' }} data-testid="error-message">{error}</li>}
-        {data && data.length > 0 && data.map((post, index) => (
-          <li key={index} className="grid-item" data-testid="post-item">
-            <div className="title" data-testid="post-title">{post.title}</div>
-            <div className="body" data-testid="post-body">{post.body}</div>
-          </li>
-        ))}
-      </ul>
+    <div className="app">
+      <h1>A short Naration of Lorem Ipsum</h1>
+      
+      {loading && <div data-testid="loading">Loading posts...</div>}
+      
+      {error && <div data-testid="error">Error: {error}</div>}
+      
+      {!loading && !error && (
+        <ul className="posts-list">
+          {data && data.length > 0 ? (
+            data.map((post, index) => (
+              <li key={index} className="grid-item" data-testid="post-item">
+                <h2 className="title" data-testid="post-title">{post.title}</h2>
+                <p className="body" data-testid="post-body">{post.body}</p>
+              </li>
+            ))
+          ) : (
+            <li>No posts available</li>
+          )}
+        </ul>
+      )}
     </div>
   );
 };
