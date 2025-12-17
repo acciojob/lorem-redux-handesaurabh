@@ -34,7 +34,7 @@ export const fetchLoremData = () => {
     dispatch(fetchLoremRequest());
     try {
       console.log('Attempting to fetch from API');
-      const response = await fetch('https://jsonplaceholder.typicode.com/posts/1');
+      const response = await fetch('https://jsonplaceholder.typicode.com/posts');
       console.log('API response:', response);
       if (!response.ok) {
         // If API is not available, use mock data
@@ -43,10 +43,10 @@ export const fetchLoremData = () => {
       const apiData = await response.json();
       console.log('API data received:', apiData);
       // Ensure data has the correct structure
-      const formattedData = {
-        title: apiData.title || 'Lorem Ipsum Dolor Sit Amet',
-        body: apiData.body || 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
-      };
+      const formattedData = apiData.map(post => ({
+        title: post.title || 'Lorem Ipsum Dolor Sit Amet',
+        body: post.body || 'Lorem ipsum dolor sit amet...'
+      }));
       dispatch(fetchLoremSuccess(formattedData));
     } catch (error) {
       // Fallback to mock data if API fails
