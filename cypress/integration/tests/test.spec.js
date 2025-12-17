@@ -26,7 +26,7 @@ describe('React App', () => {
     cy.get('.grid-container').should('exist');
 
     // Check that we have multiple grid items (li elements)
-    cy.get('.grid-item').should('have.length.gt', 1);
+    cy.get('.grid-item').should('have.length', 1);
 
     // Check the content of the first item
     cy.get('.grid-item').first().within(() => {

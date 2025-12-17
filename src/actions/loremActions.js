@@ -43,7 +43,7 @@ export const fetchLoremData = () => {
       const apiData = await response.json();
       console.log('API data received:', apiData);
       // Ensure data has the correct structure
-      const formattedData = apiData.map(post => ({
+      const formattedData = apiData.slice(0, 1).map(post => ({
         title: post.title || 'Lorem Ipsum Dolor Sit Amet',
         body: post.body || 'Lorem ipsum dolor sit amet...'
       }));

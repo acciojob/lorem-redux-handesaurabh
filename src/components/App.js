@@ -25,13 +25,13 @@ const App = () => {
       <h4 style={{ color: '#555', textAlign: 'center', marginBottom: '30px', fontWeight: 'normal' }}>
         Below Contains A title and Body gotten froma random API, Please take your time to Review
       </h4>
-      {loading && <div style={{ textAlign: 'center', color: '#888', fontStyle: 'italic' }}>Fetching data...</div>}
-      {error && <div style={{ color: 'red', textAlign: 'center' }}>{error}</div>}
       <ul className="grid-container">
+        {loading && <li className="grid-item" style={{ textAlign: 'center', color: '#888', fontStyle: 'italic' }}>Fetching data...</li>}
+        {error && <li className="grid-item" style={{ color: 'red', textAlign: 'center' }}>{error}</li>}
         {data.map((post, index) => (
           <li key={index} className="grid-item">
             <div className="title">Title :{post.title}</div>
-            <div className="body">Body : {post.body}</div>
+            <div className="body">Body :{post.body}</div>
           </li>
         ))}
       </ul>
