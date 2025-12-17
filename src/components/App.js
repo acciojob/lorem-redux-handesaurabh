@@ -7,7 +7,7 @@ const App = () => {
   // Simplify state handling
   const loremState = useSelector(state => state.lorem);
   const loading = loremState?.loading ?? true;
-  const data = loremState?.data ?? [];
+  const data = loremState?.data || [];
   const error = loremState?.error ?? '';
 
   useEffect(() => {

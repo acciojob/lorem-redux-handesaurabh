@@ -51,10 +51,10 @@ export const fetchLoremData = () => {
     } catch (error) {
       // Fallback to mock data if API fails
       console.warn('API not available, using mock data:', error.message);
-      const mockData = {
+      const mockData = [{
         title: 'Lorem Ipsum Dolor Sit Amet',
         body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
-      };
+      }];
       console.log('Using mock data:', mockData);
       // Dispatch mock data immediately
       console.log('Dispatching mock data');
