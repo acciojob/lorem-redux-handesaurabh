@@ -5,7 +5,7 @@ describe('React App', () => {
 
   it('displays intro text', () => {
     cy.get('h1').should('contain', 'A short Naration of Lorem Ipsum');
-    cy.get('h4').should('contain', 'Below Contains A title and Body gotten from a random API, Please take your time to Review');
+    cy.get('h4').should('contain', 'Below Contains A title and Body gotten froma random API, Please take your time to Review');
   });
 
   it('should display loading state by default', () => {
@@ -21,13 +21,13 @@ describe('React App', () => {
   it('should display posts after fetching from API', () => {
     // Wait for the data to load
     cy.wait(2000); // Wait for potential network delay/timeout
-    
+
     // Check for the grid container
     cy.get('.grid-container').should('exist');
-    
+
     // Check that we have multiple grid items (li elements)
     cy.get('.grid-item').should('have.length.gt', 1);
-    
+
     // Check the content of the first item
     cy.get('.grid-item').first().within(() => {
       cy.get('.title').should('contain', 'Title :');
