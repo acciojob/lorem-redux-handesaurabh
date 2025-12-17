@@ -1,7 +1,7 @@
 import { FETCH_LOREM_REQUEST, FETCH_LOREM_SUCCESS, FETCH_LOREM_FAILURE } from '../actions/loremActions';
 
 const initialState = {
-  loading: false,
+  loading: true,
   data: { title: '', body: '' },
   error: ''
 };
