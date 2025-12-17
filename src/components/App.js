@@ -6,9 +6,9 @@ const App = () => {
   const dispatch = useDispatch();
   // Simplify state handling
   const loremState = useSelector(state => state.lorem);
-  const loading = loremState?.loading ?? true;
+  const loading = loremState?.loading || false;
   const data = loremState?.data || [];
-  const error = loremState?.error ?? '';
+  const error = loremState?.error || '';
 
   useEffect(() => {
     // Small delay to ensure component is mounted
