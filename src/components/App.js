@@ -12,15 +12,15 @@ const App = () => {
 
   return (
     <div style={{ maxWidth: "800px", margin: "0 auto" }}>
-      <h1>A short Naration of Lorem Ipsum</h1>
+      <h1>Lorem Ipsum Dolor Sit Amet</h1>
 
-      {loading && <h4>Loading...</h4>}
+      {loading && <p>Loading...</p>}
 
       {!loading && data?.title && (
         <ul>
           <li>
-            <h4>{data.title}</h4>
-            <p>{data.body}</p>
+            <h4 className="title">{data.title}</h4>
+            <p className="body">{data.body}</p>
           </li>
         </ul>
       )}
@@ -29,4 +29,3 @@ const App = () => {
 };
 
 export default App;
-
