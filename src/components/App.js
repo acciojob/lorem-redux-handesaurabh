@@ -4,7 +4,7 @@ import { fetchLoremData } from "../actions/loremActions";
 
 const App = () => {
   const dispatch = useDispatch();
-  const loremState = useSelector(state => state.lorem || { loading: true, data: { title: '', body: '' }, error: '' });
+  const loremState = useSelector(state => state.lorem);
   const { loading, data, error } = loremState;
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const App = () => {
       <div>
         {loading && <h4 style={{ textAlign: 'center', color: '#888', fontStyle: 'italic' }}>Fetching data...</h4>}
         {error && <p style={{ color: '#d32f2f', textAlign: 'center', padding: '10px', backgroundColor: '#ffebee', borderRadius: '4px' }}>Error: {error}</p>}
-        {!loading && data && data.title && data.body && (
+        {!loading && !error && data.title && (
           <ul style={{ listStyleType: 'none', padding: 0 }}>
             <li>
               <h4 className="title" style={{ color: '#444', marginBottom: '10px' }}>Title :{data.title}</h4>
