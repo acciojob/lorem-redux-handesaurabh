@@ -7,7 +7,7 @@ const App = () => {
   // Simplify state handling
   const loremState = useSelector(state => state.lorem);
   const loading = loremState?.loading ?? true;
-  const data = loremState?.data ?? { title: 'Default Title', body: 'Default Body' };
+  const data = loremState?.data ?? [];
   const error = loremState?.error ?? '';
 
   useEffect(() => {
@@ -15,22 +15,27 @@ const App = () => {
     const timer = setTimeout(() => {
       dispatch(fetchLoremData());
     }, 100);
-    
+
     return () => clearTimeout(timer);
   }, [dispatch]);
 
   return (
-    <div style={{ maxWidth: '800px', margin: '0 auto', backgroundColor: 'white', padding: '20px', borderRadius: '8px', boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)' }}>
-      <h1 style={{ color: '#333', textAlign: 'center' }}>Below Contains A title and Body gotten froma random API, Please take your time to Review</h1>
+    <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '20px' }}>
+      <h1 style={{ color: '#333', textAlign: 'center', marginBottom: '10px' }}>A short Naration of Lorem Ipsum</h1>
+      <h3 style={{ color: '#555', textAlign: 'center', marginBottom: '30px', fontWeight: 'normal' }}>
+        Below Contains A title and Body gotten from a random API, Please take your time to Review
+      </h3>
       <div>
         {loading && <h4 style={{ textAlign: 'center', color: '#888', fontStyle: 'italic' }}>Fetching data...</h4>}
         {error && <p style={{ color: '#d32f2f', textAlign: 'center', padding: '10px', backgroundColor: '#ffebee', borderRadius: '4px' }}>Error: {error}</p>}
-        <ul>
-          <li>
-            <div className="title">Title : {data.title}</div>
-            <div className="body">Body : {data.body}</div>
-          </li>
-        </ul>
+        <div className="grid-container">
+          {data.map((post, index) => (
+            <div key={index} className="grid-item">
+              <div className="title">Title : {post.title}</div>
+              <div className="body">Body : {post.body}</div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
