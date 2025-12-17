@@ -8,25 +8,23 @@ const App = () => {
   const { loading, data, error } = loremState;
 
   useEffect(() => {
-    // Small delay to ensure component is mounted
-    const timer = setTimeout(() => {
-      dispatch(fetchLoremData());
-    }, 100);
-    
-    return () => clearTimeout(timer);
+    dispatch(fetchLoremData());
   }, [dispatch]);
 
   return (
     <div style={{ maxWidth: '800px', margin: '0 auto', backgroundColor: 'white', padding: '20px', borderRadius: '8px', boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)' }}>
       <h1 style={{ color: '#333', textAlign: 'center' }}>Lorem Ipsum Dolor Sit Amet</h1>
+      <p style={{ textAlign: 'center', color: '#666', marginBottom: '20px' }}>
+        Below Contains A title and Body gotten froma random API, Please take your time to Review
+      </p>
       <div>
         {loading && <h4 style={{ textAlign: 'center', color: '#888', fontStyle: 'italic' }}>Fetching data...</h4>}
         {error && <p style={{ color: '#d32f2f', textAlign: 'center', padding: '10px', backgroundColor: '#ffebee', borderRadius: '4px' }}>Error: {error}</p>}
-        {data && data.title && data.body && (
-          <ul>
+        {!loading && data && data.title && data.body && (
+          <ul style={{ listStyleType: 'none', padding: 0 }}>
             <li>
-              <h4 className="title">{data.title}</h4>
-              <p className="body">{data.body}</p>
+              <h4 className="title" style={{ color: '#444', marginBottom: '10px' }}>Title :{data.title}</h4>
+              <p className="body" style={{ lineHeight: '1.6', color: '#666' }}>{data.body}</p>
             </li>
           </ul>
         )}
