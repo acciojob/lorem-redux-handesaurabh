@@ -14,13 +14,12 @@ const App = () => {
   return (
     <div className="page">
       <div className="card">
-        {/* EXACT heading text */}
+        {/* Main heading */}
         <h1 className="main-title">A short Naration of Lorem Ipsum</h1>
 
-        {/* Intro text as h4 because the tests look for h4 */}
+        {/* Intro text – must match Cypress string EXACTLY */}
         <h4 className="intro-text">
-          Below Contains A title and Body gotten from
-          a random API, Please take your time to Review
+          Below Contains A title and Body gotten from a random API, Please take your time to Review
         </h4>
 
         {loading && (
@@ -58,4 +57,3 @@ const App = () => {
 };
 
 export default App;
-;
