@@ -25,7 +25,7 @@ const App = () => {
             data.map((post, index) => (
               <li key={index} className="grid-item" data-testid="post-item">
                 <h4 className="title" data-testid="post-title">Title :{post.title}</h4>
-                <p className="body" data-testid="post-body">{post.body}</p>
+                <p className="body" data-testid="post-body">Body :{post.body}</p>
               </li>
             ))
           ) : (
