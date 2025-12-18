@@ -44,7 +44,7 @@ const App = () => {
                   {post.title}
                 </p>
                 <p className="body" data-testid="post-body">
-                  <span className="label">Body </span>
+                  <span className="label">Body :</span>
                   {post.body}
                 </p>
               </li>
