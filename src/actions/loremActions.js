@@ -60,8 +60,6 @@ export const fetchLoremData = () => {
         title: post.title || 'Lorem Ipsum Dolor Sit Amet',
         body: post.body || 'Lorem ipsum dolor sit amet...'
       }));
-      // Add delay before dispatching success
-      await new Promise(resolve => setTimeout(resolve, 2000));
       dispatch(fetchLoremSuccess(formattedData));
     } catch (error) {
       // Fallback to mock data if API fails
@@ -71,8 +69,6 @@ export const fetchLoremData = () => {
         body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
       }];
       console.log('Using mock data:', mockData);
-      // Add delay before dispatching success
-      await new Promise(resolve => setTimeout(resolve, 2000));
       dispatch(fetchLoremSuccess(mockData));
     }
   };
