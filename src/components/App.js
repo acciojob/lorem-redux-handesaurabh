@@ -20,22 +20,20 @@ const App = () => {
         <h4 className="intro-text">
           Below Contains A title and Body gotten froma random API, Please take your time to Review
         </h4>
-        {loading && (
+        
+        {loading ? (
           <h4 data-testid="loading" className="loading-text">
             Loading posts...
           </h4>
-        )}
-        {error && (
+        ) : error ? (
           <div data-testid="error" className="error-text">
             Error: {error}
           </div>
-        )}
-        {!loading && !error && (
+        ) : (
           <ul className="grid-container">
             {(data && data.length > 0 ? data : []).slice(0, 6).map((post, index) => (
               <li key={index} className="grid-item" data-testid="post-item">
                 <p className="title" data-testid="post-title">
-                  {/* IMPORTANT: no colon, just "Title " */}
                   <span className="label">Title :</span>
                   {post.title}
                 </p>
