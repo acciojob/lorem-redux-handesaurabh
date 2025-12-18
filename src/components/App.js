@@ -19,7 +19,7 @@ const App = () => {
 
         {/* Intro text – must match Cypress string EXACTLY */}
         <h4 className="intro-text">
-          Below Contains A title and Body gotten from a random API, Please take your time to Review
+          Below Contains A title and Body gotten froma random API, Please take your time to Review
         </h4>
 
         {loading && (
@@ -40,7 +40,7 @@ const App = () => {
               <li key={index} className="grid-item" data-testid="post-item">
                 <p className="title" data-testid="post-title">
                   {/* IMPORTANT: no colon, just "Title " */}
-                  <span className="label">Title </span>
+                  <span className="label">Title :</span>
                   {post.title}
                 </p>
                 <p className="body" data-testid="post-body">
