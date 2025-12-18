@@ -12,8 +12,10 @@ const App = () => {
 
   return (
     <div className="app">
-      <h1 data-testid="intro-text">A short Naration of Lorem Ipsum</h1>
-      <h3 data-testid="subtitle">Below Contains A title and Body gotten froma random API, Please take your time to Review</h3>
+      <div className="header">
+        <h1 data-testid="intro-text">A short Naration of Lorem Ipsum</h1>
+        <h3 data-testid="subtitle">Below Contains A title and Body gotten froma random API, Please take your time to Review</h3>
+      </div>
 
       {loading && <h4 data-testid="loading">Loading posts...</h4>}
 
@@ -21,16 +23,12 @@ const App = () => {
 
       {!loading && !error && data && data.length > 0 && (
         <ul className="posts-list grid-container">
-          {data && data.length > 0 ? (
-            data.map((post, index) => (
-              <li key={index} className="grid-item" data-testid="post-item">
-                <h4 className="title" data-testid="post-title">Title :{post.title}</h4>
-                <p className="body" data-testid="post-body">Body :{post.body}</p>
-              </li>
-            ))
-          ) : (
-            <li>No posts available</li>
-          )}
+          {data.map((post, index) => (
+            <li key={index} className="grid-item" data-testid="post-item">
+              <h4 className="title" data-testid="post-title">Title :{post.title}</h4>
+              <p className="body" data-testid="post-body">Body :{post.body}</p>
+            </li>
+          ))}
         </ul>
       )}
     </div>
