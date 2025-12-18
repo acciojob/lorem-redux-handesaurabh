@@ -19,7 +19,7 @@ const App = () => {
 
       {error && <div data-testid="error">Error: {error}</div>}
 
-      {!loading && !error && (
+      {!loading && !error && data && data.length > 0 && (
         <ul className="posts-list grid-container">
           {data && data.length > 0 ? (
             data.map((post, index) => (
