@@ -5,13 +5,13 @@ describe('React App', () => {
   });
 
   it('displays intro text', () => {
-    cy.get('h1').should('contain', 'A short Naration of Lorem Ipsum');
+    cy.get('h4').should('contain', 'A short Naration of Lorem Ipsum');
   });
 
   it('displays posts fetched from API', () => {
     // Wait a bit for loading to finish
     cy.wait(2000);
-    
+
     // Verify posts are displayed
     cy.get('[data-testid="post-item"]', { timeout: 5000 }).should('have.length.greaterThan', 0);
     cy.get('.title').first().should('be.visible');
@@ -22,20 +22,20 @@ describe('React App', () => {
     cy.intercept('GET', '**/posts', (req) => {
       req.destroy(); // Block the request to keep loading state visible
     }).as('getPostsBlocked');
-    
+
     // Reload to trigger the blocked request
     cy.reload();
-    
+
     // Check loading indicator appears
-    cy.get('[data-testid="loading"]', { timeout: 1000 }).should('be.visible');
+    cy.get('h4', { timeout: 1000 }).should('contain', 'Loading posts...');
   });
 
   it('should display posts after fetching from API', () => {
     // Wait for posts to load
     cy.get('[data-testid="post-item"]', { timeout: 10000 }).should('have.length.greaterThan', 0);
-    
+
     // Verify post content is visible
-    cy.get('.title').should('be.visible');
+    cy.get('h4').should('be.visible');
     cy.get('.body').should('be.visible');
   });
 });
