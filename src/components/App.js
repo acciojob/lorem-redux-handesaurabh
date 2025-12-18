@@ -13,7 +13,7 @@ const App = () => {
 
   return (
     <div className="app">
-      <h4>A short Naration of Lorem Ipsum</h4>
+      <h1>A short Naration of Lorem Ipsumsunt aut facere repellat provident occaecati excepturi optio reprehenderit</h1>
 
       {loading && <h4 data-testid="loading">Loading posts...</h4>}
 

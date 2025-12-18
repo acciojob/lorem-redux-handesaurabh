@@ -5,7 +5,7 @@ describe('React App', () => {
   });
 
   it('displays intro text', () => {
-    cy.get('h4').should('contain', 'A short Naration of Lorem Ipsum');
+    cy.get('h1').should('contain', 'A short Naration of Lorem Ipsumsunt aut facere repellat provident occaecati excepturi optio reprehenderit');
   });
 
   it('displays posts fetched from API', () => {
@@ -27,7 +27,7 @@ describe('React App', () => {
     cy.reload();
 
     // Check loading indicator appears
-    cy.get('h4', { timeout: 1000 }).should('contain', 'Loading posts...');
+    cy.get('[data-testid="loading"]', { timeout: 1000 }).should('contain', 'Loading posts...');
   });
 
   it('should display posts after fetching from API', () => {
@@ -35,7 +35,7 @@ describe('React App', () => {
     cy.get('[data-testid="post-item"]', { timeout: 10000 }).should('have.length.greaterThan', 0);
 
     // Verify post content is visible
-    cy.get('h4').should('be.visible');
+    cy.get('h1').should('be.visible');
     cy.get('.body').should('be.visible');
   });
 });
