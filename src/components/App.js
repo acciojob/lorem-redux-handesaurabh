@@ -22,14 +22,18 @@ const App = () => {
 
       {error && <div data-testid="error">Error: {error}</div>}
 
-      {!loading && !error && data && data.length > 0 && (
+      {!loading && !error && (
         <ul className="posts-list grid-container">
-          {data.map((post, index) => (
-            <li key={index} className="grid-item" data-testid="post-item">
-              <h4 className="title" data-testid="post-title">Title :{post.title}</h4>
-              <p className="body" data-testid="post-body">Body :{post.body}</p>
-            </li>
-          ))}
+          {data && data.length > 0 ? (
+            data.map((post, index) => (
+              <li key={index} className="grid-item" data-testid="post-item">
+                <h4 className="title" data-testid="post-title">Title :{post.title}</h4>
+                <p className="body" data-testid="post-body">Body :{post.body}</p>
+              </li>
+            ))
+          ) : (
+            <li>No posts available</li>
+          )}
         </ul>
       )}
     </div>
