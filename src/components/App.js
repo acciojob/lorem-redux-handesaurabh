@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchLoremData } from '../actions/loremActions';
-import './styles/App.css';
+import '../styles/App.css';
 
 const App = () => {
   const dispatch = useDispatch();
