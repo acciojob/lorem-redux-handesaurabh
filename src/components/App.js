@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchLoremData } from '../actions/loremActions';
-import './../styles/App.css';
+import './App.css';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ const App = () => {
     <div className="app">
       <div className="header">
         <h1 data-testid="intro-text">A short Naration of Lorem Ipsum</h1>
-        <h3 data-testid="subtitle">Below Contains A title and Body gotten froma random API, Please take your time to Review</h3>
+        <p data-testid="subtitle">Below Contains A title and Body gotten froma random API, Please take your time to Review</p>
       </div>
 
       {loading && <h4 data-testid="loading">Loading posts...</h4>}
