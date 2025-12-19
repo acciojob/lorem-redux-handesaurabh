@@ -17,9 +17,9 @@ const App = () => {
         {/* Main heading */}
         <h1 className="main-title">A short Naration of Lorem Ipsum</h1>
         {/* Intro text – must match Cypress string EXACTLY */}
-        <p className="intro-text">
+        <h4 className="intro-text">
           Below Contains A title and Body gotten froma random API, Please take your time to Review
-        </p>
+        </h4>
         
         {loading ? (
           <h4 data-testid="loading" className="loading-text">
@@ -31,7 +31,7 @@ const App = () => {
           </div>
         ) : (
           <ul className="grid-container">
-            {(data && data.length > 0 ? data : []).slice(0, 6).map((post, index) => (
+            {(data && data.length > 0 ? data : []).slice(0, 1).map((post, index) => (
               <li key={index} className="grid-item" data-testid="post-item">
                 <p className="title" data-testid="post-title">
                   <span className="label">Title :</span>
