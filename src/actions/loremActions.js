@@ -49,12 +49,7 @@ export const fetchLoremData = () => {
 
       dispatch(fetchLoremSuccess(formattedData));
     } catch (error) {
-      const mockData = Array.from({ length: 6 }).map((_, i) => ({
-        title: `Lorem Ipsum Dolor Sit Amet ${i + 1}`,
-        body:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-      }));
-      dispatch(fetchLoremSuccess(mockData));
-    }
+  dispatch(fetchLoremFailure(error.message || 'Failed to fetch data'));
+}
   };
 };
