@@ -18,6 +18,9 @@ export const fetchLoremFailure = (error) => ({
 
 export const fetchLoremData = () => {
   return async (dispatch) => {
+    // Add delay BEFORE dispatching request to ensure loading state is visible
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
     dispatch(fetchLoremRequest());
     try {
       const controller = new AbortController();
@@ -45,9 +48,6 @@ export const fetchLoremData = () => {
           post.body ||
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
       }));
-      
-      // Add delay to ensure loading state is visible
-      await new Promise(resolve => setTimeout(resolve, 800));
       
       dispatch(fetchLoremSuccess(formattedData));
     } catch (error) {
