@@ -21,7 +21,7 @@ const App = () => {
           Below Contains A title and Body gotten froma random API, Please take your time to Review
         </h4>
         
-        {loading ? (
+        {loading && data.length === 0 ? (
           <h4 data-testid="loading" className="loading-text">
             Loading posts...
           </h4>
