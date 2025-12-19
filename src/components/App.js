@@ -17,9 +17,9 @@ const App = () => {
         {/* Main heading */}
         <h1 className="main-title">A short Naration of Lorem Ipsum</h1>
         {/* Intro text – must match Cypress string EXACTLY */}
-        <h4 className="intro-text">
+        <p className="intro-text">
           Below Contains A title and Body gotten froma random API, Please take your time to Review
-        </h4>
+        </p>
         
         {loading ? (
           <h4 data-testid="loading" className="loading-text">
