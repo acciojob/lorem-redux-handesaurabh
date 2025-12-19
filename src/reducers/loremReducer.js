@@ -1,8 +1,4 @@
-import {
-  FETCH_LOREM_REQUEST,
-  FETCH_LOREM_SUCCESS,
-  FETCH_LOREM_FAILURE
-} from '../actions/loremActions';
+import { FETCH_LOREM_REQUEST, FETCH_LOREM_SUCCESS, FETCH_LOREM_FAILURE } from '../actions/loremActions';
 
 const initialState = {
   loading: true,
