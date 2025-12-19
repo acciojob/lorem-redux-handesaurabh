@@ -23,9 +23,21 @@ const App = () => {
         </h4>
         
         {loading && (
-          <h4 data-testid="loading" className="loading-text">
-            Loading titles...
-          </h4>
+          <>
+            <h4 data-testid="loading" className="loading-text">
+              Loading titles...
+            </h4>
+            <ul className="grid-container">
+              <li className="grid-item">
+                <p className="title">
+                  Title :Loading titles
+                </p>
+                <p className="body">
+                  Body :Loading...
+                </p>
+              </li>
+            </ul>
+          </>
         )}
 
         {error && (
