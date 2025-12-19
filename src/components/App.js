@@ -16,45 +16,30 @@ const App = () => {
       <div className="card">
         {/* Main heading */}
         <h1 className="main-title">A short Naration of Lorem Ipsum</h1>
-        
         {/* Intro text – must match Cypress string EXACTLY */}
-        <h4 data-testid="intro-text" className="intro-text">
+        <h4 className="intro-text">
           Below Contains A title and Body gotten froma random API, Please take your time to Review
         </h4>
         
-        {loading && (
-          <>
-            <h4 data-testid="loading" className="loading-text">
-              Loading titles...
-            </h4>
-            <ul className="grid-container">
-              <li className="grid-item">
-                <p className="title">
-                  Title :Loading titles
-                </p>
-                <p className="body">
-                  Body :Loading...
-                </p>
-              </li>
-            </ul>
-          </>
-        )}
-
-        {error && (
+        {loading ? (
+          <h4 data-testid="loading" className="loading-text">
+            Loading posts...
+          </h4>
+        ) : error ? (
           <div data-testid="error" className="error-text">
             Error: {error}
           </div>
-        )}
-
-        {!loading && !error && data && data.length > 0 && (
+        ) : (
           <ul className="grid-container">
-            {data.slice(0, 1).map((post, index) => (
+            {(data && data.length > 0 ? data : []).slice(0, 6).map((post, index) => (
               <li key={index} className="grid-item" data-testid="post-item">
                 <p className="title" data-testid="post-title">
-                  Title :{post.title}
+                  <span className="label">Title :</span>
+                  {post.title}
                 </p>
                 <p className="body" data-testid="post-body">
-                  Body :{post.body}
+                  <span className="label">Body :</span>
+                  {post.body}
                 </p>
               </li>
             ))}
