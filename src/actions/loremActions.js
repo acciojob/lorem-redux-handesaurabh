@@ -40,7 +40,7 @@ export const fetchLoremData = () => {
 
       const apiData = await response.json();
 
-      const formattedData = apiData.slice(0, 1).map((post) => ({
+      const formattedData = apiData.slice(0, 6).map((post) => ({
         title: post.title || 'Lorem Ipsum Dolor Sit Amet',
         body:
           post.body ||
@@ -49,7 +49,7 @@ export const fetchLoremData = () => {
 
       dispatch(fetchLoremSuccess(formattedData));
     } catch (error) {
-      const mockData = Array.from({ length: 1 }).map((_, i) => ({
+      const mockData = Array.from({ length: 6 }).map((_, i) => ({
         title: `Lorem Ipsum Dolor Sit Amet ${i + 1}`,
         body:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
