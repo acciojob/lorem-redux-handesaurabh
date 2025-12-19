@@ -19,11 +19,10 @@ export const fetchLoremFailure = (error) => ({
 export const fetchLoremData = () => {
   return async (dispatch) => {
     dispatch(fetchLoremRequest());
-
     try {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 5000);
-
+      
       const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
         signal: controller.signal,
         headers: {
@@ -31,25 +30,28 @@ export const fetchLoremData = () => {
           'Content-Type': 'application/json'
         }
       });
-
+      
       clearTimeout(timeoutId);
-
+      
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-
+      
       const apiData = await response.json();
-
+      
       const formattedData = apiData.slice(0, 6).map((post) => ({
         title: post.title || 'Lorem Ipsum Dolor Sit Amet',
         body:
           post.body ||
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
       }));
-await new Promise(resolve => setTimeout(resolve, 300));
+      
+      // Add delay to ensure loading state is visible
+      await new Promise(resolve => setTimeout(resolve, 800));
+      
       dispatch(fetchLoremSuccess(formattedData));
     } catch (error) {
-  dispatch(fetchLoremFailure(error.message || 'Failed to fetch data'));
-}
+      dispatch(fetchLoremFailure(error.message || 'Failed to fetch data'));
+    }
   };
 };
