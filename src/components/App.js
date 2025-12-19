@@ -31,7 +31,7 @@ const App = () => {
           </div>
         ) : (
           <ul className="grid-container">
-            {(data && data.length > 0 ? data : []).slice(0, 1).map((post, index) => (
+            {(data && data.length > 0 ? data : []).slice(0, 6).map((post, index) => (
               <li key={index} className="grid-item" data-testid="post-item">
                 <p className="title" data-testid="post-title">
                   <span className="label">Title :</span>
