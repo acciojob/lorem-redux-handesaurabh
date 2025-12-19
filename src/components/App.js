@@ -26,9 +26,15 @@ const App = () => {
         <ul className="posts-list grid-container">
           {data && data.length > 0 ? (
             data.map((post, index) => (
-              <li key={index} className="grid-item" data-testid="post-item">
-                <h4 className="title" data-testid="post-title">Title :{post.title}</h4>
-                <p className="body" data-testid="post-body">Body :{post.body}</p>
+             <li key={index} className="grid-item" data-testid="post-item">
+                <p className="title" data-testid="post-title">
+                  <span className="label">Title :</span>
+                  {post.title}
+                </p>
+                <p className="body" data-testid="post-body">
+                  <span className="label">Body :</span>
+                  {post.body}
+                </p>
               </li>
             ))
           ) : (
