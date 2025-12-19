@@ -24,7 +24,7 @@ const App = () => {
         
         {loading && (
           <h4 data-testid="loading" className="loading-text">
-            Loading posts...
+            Loading titles...
           </h4>
         )}
 
