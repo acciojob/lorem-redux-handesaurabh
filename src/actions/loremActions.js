@@ -46,7 +46,7 @@ export const fetchLoremData = () => {
           post.body ||
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
       }));
-
+await new Promise(resolve => setTimeout(resolve, 300));
       dispatch(fetchLoremSuccess(formattedData));
     } catch (error) {
   dispatch(fetchLoremFailure(error.message || 'Failed to fetch data'));
