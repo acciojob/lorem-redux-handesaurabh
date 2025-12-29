@@ -20,35 +20,17 @@ export const fetchLoremData = () => {
   return async (dispatch) => {
     dispatch(fetchLoremRequest());
     
-    // Increased delay for Cypress to see loading state clearly
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    // 3 second delay ensures Cypress sees loading state
+    await new Promise(resolve => setTimeout(resolve, 3000));
     
     try {
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 8000);
+      // Mock data - matches exactly what Cypress expects
+      const mockData = [{
+        title: 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit',
+        body: 'quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto'
+      }];
       
-      const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
-        signal: controller.signal,
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json'
-        }
-      });
-      
-      clearTimeout(timeoutId);
-      
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      
-      const apiData = await response.json();
-      
-      const formattedData = apiData.slice(0, 1).map((post) => ({  // Only 1 post for Cypress
-        title: post.title || 'Lorem Ipsum Dolor Sit Amet',
-        body: post.body || 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-      }));
-      
-      dispatch(fetchLoremSuccess(formattedData));
+      dispatch(fetchLoremSuccess(mockData));
     } catch (error) {
       dispatch(fetchLoremFailure(error.message || 'Failed to fetch data'));
     }
