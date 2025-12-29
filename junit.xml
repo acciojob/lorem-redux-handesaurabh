@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="4" failures="4" time="16.248">
+  <testsuite name="React App" errors="0" failures="4" skipped="0" timestamp="2025-12-29T14:20:05" time="8.061" tests="4">
+    <testcase classname="React App displays intro text" name="React App displays intro text" time="0.008">
+      <failure>ReferenceError: cy is not defined
+    at Object.&lt;anonymous&gt; (D:\modules\lorem-redux-handesaurabh-master\cypress\integration\tests\test.spec.js:3:5)
+    at Object.asyncJestLifecycle (D:\modules\lorem-redux-handesaurabh-master\node_modules\jest-jasmine2\build\jasmineAsyncInstall.js:58:37)
+    at D:\modules\lorem-redux-handesaurabh-master\node_modules\jest-jasmine2\build\queueRunner.js:45:12
+    at new Promise (&lt;anonymous&gt;)
+    at mapper (D:\modules\lorem-redux-handesaurabh-master\node_modules\jest-jasmine2\build\queueRunner.js:28:19)
+    at D:\modules\lorem-redux-handesaurabh-master\node_modules\jest-jasmine2\build\queueRunner.js:75:41
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)</failure>
+      <failure>ReferenceError: cy is not defined
+    at Object.&lt;anonymous&gt; (D:\modules\lorem-redux-handesaurabh-master\cypress\integration\tests\test.spec.js:7:5)
+    at Object.asyncJestTest (D:\modules\lorem-redux-handesaurabh-master\node_modules\jest-jasmine2\build\jasmineAsyncInstall.js:106:37)
+    at D:\modules\lorem-redux-handesaurabh-master\node_modules\jest-jasmine2\build\queueRunner.js:45:12
+    at new Promise (&lt;anonymous&gt;)
+    at mapper (D:\modules\lorem-redux-handesaurabh-master\node_modules\jest-jasmine2\build\queueRunner.js:28:19)
+    at D:\modules\lorem-redux-handesaurabh-master\node_modules\jest-jasmine2\build\queueRunner.js:75:41
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)</failure>
+    </testcase>
+    <testcase classname="React App displays posts fetched from API" name="React App displays posts fetched from API" time="0.004">
+      <failure>ReferenceError: cy is not defined
+    at Object.&lt;anonymous&gt; (D:\modules\lorem-redux-handesaurabh-master\cypress\integration\tests\test.spec.js:3:5)
+    at Object.asyncJestLifecycle (D:\modules\lorem-redux-handesaurabh-master\node_modules\jest-jasmine2\build\jasmineAsyncInstall.js:58:37)
+    at D:\modules\lorem-redux-handesaurabh-master\node_modules\jest-jasmine2\build\queueRunner.js:45:12
+    at new Promise (&lt;anonymous&gt;)
+    at mapper (D:\modules\lorem-redux-handesaurabh-master\node_modules\jest-jasmine2\build\queueRunner.js:28:19)
+    at D:\modules\lorem-redux-handesaurabh-master\node_modules\jest-jasmine2\build\queueRunner.js:75:41
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)</failure>
+      <failure>ReferenceError: cy is not defined
+    at Object.&lt;anonymous&gt; (D:\modules\lorem-redux-handesaurabh-master\cypress\integration\tests\test.spec.js:12:5)
+    at Object.asyncJestTest (D:\modules\lorem-redux-handesaurabh-master\node_modules\jest-jasmine2\build\jasmineAsyncInstall.js:106:37)
+    at D:\modules\lorem-redux-handesaurabh-master\node_modules\jest-jasmine2\build\queueRunner.js:45:12
+    at new Promise (&lt;anonymous&gt;)
+    at mapper (D:\modules\lorem-redux-handesaurabh-master\node_modules\jest-jasmine2\build\queueRunner.js:28:19)
+    at D:\modules\lorem-redux-handesaurabh-master\node_modules\jest-jasmine2\build\queueRunner.js:75:41
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)</failure>
+    </testcase>
+    <testcase classname="React App should display loading state by default" name="React App should display loading state by default" time="0.002">
+      <failure>ReferenceError: cy is not defined
+    at Object.&lt;anonymous&gt; (D:\modules\lorem-redux-handesaurabh-master\cypress\integration\tests\test.spec.js:3:5)
+    at Object.asyncJestLifecycle (D:\modules\lorem-redux-handesaurabh-master\node_modules\jest-jasmine2\build\jasmineAsyncInstall.js:58:37)
+    at D:\modules\lorem-redux-handesaurabh-master\node_modules\jest-jasmine2\build\queueRunner.js:45:12
+    at new Promise (&lt;anonymous&gt;)
+    at mapper (D:\modules\lorem-redux-handesaurabh-master\node_modules\jest-jasmine2\build\queueRunner.js:28:19)
+    at D:\modules\lorem-redux-handesaurabh-master\node_modules\jest-jasmine2\build\queueRunner.js:75:41
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)</failure>
+      <failure>ReferenceError: cy is not defined
+    at Object.&lt;anonymous&gt; (D:\modules\lorem-redux-handesaurabh-master\cypress\integration\tests\test.spec.js:17:5)
+    at Object.asyncJestTest (D:\modules\lorem-redux-handesaurabh-master\node_modules\jest-jasmine2\build\jasmineAsyncInstall.js:106:37)
+    at D:\modules\lorem-redux-handesaurabh-master\node_modules\jest-jasmine2\build\queueRunner.js:45:12
+    at new Promise (&lt;anonymous&gt;)
+    at mapper (D:\modules\lorem-redux-handesaurabh-master\node_modules\jest-jasmine2\build\queueRunner.js:28:19)
+    at D:\modules\lorem-redux-handesaurabh-master\node_modules\jest-jasmine2\build\queueRunner.js:75:41
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)</failure>
+    </testcase>
+    <testcase classname="React App should display posts after fetching from API" name="React App should display posts after fetching from API" time="0.002">
+      <failure>ReferenceError: cy is not defined
+    at Object.&lt;anonymous&gt; (D:\modules\lorem-redux-handesaurabh-master\cypress\integration\tests\test.spec.js:3:5)
+    at Object.asyncJestLifecycle (D:\modules\lorem-redux-handesaurabh-master\node_modules\jest-jasmine2\build\jasmineAsyncInstall.js:58:37)
+    at D:\modules\lorem-redux-handesaurabh-master\node_modules\jest-jasmine2\build\queueRunner.js:45:12
+    at new Promise (&lt;anonymous&gt;)
+    at mapper (D:\modules\lorem-redux-handesaurabh-master\node_modules\jest-jasmine2\build\queueRunner.js:28:19)
+    at D:\modules\lorem-redux-handesaurabh-master\node_modules\jest-jasmine2\build\queueRunner.js:75:41
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)</failure>
+      <failure>ReferenceError: cy is not defined
+    at Object.&lt;anonymous&gt; (D:\modules\lorem-redux-handesaurabh-master\cypress\integration\tests\test.spec.js:21:5)
+    at Object.asyncJestTest (D:\modules\lorem-redux-handesaurabh-master\node_modules\jest-jasmine2\build\jasmineAsyncInstall.js:106:37)
+    at D:\modules\lorem-redux-handesaurabh-master\node_modules\jest-jasmine2\build\queueRunner.js:45:12
+    at new Promise (&lt;anonymous&gt;)
+    at mapper (D:\modules\lorem-redux-handesaurabh-master\node_modules\jest-jasmine2\build\queueRunner.js:28:19)
+    at D:\modules\lorem-redux-handesaurabh-master\node_modules\jest-jasmine2\build\queueRunner.js:75:41
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)</failure>
+    </testcase>
+  </testsuite>
+</testsuites>

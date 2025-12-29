@@ -1,0 +1,136 @@
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+
+Why you should do it regularly:
+https://github.com/browserslist/browserslist#browsers-data-updating
+FAIL cypress/integration/tests/test.spec.js (8.061 s)
+  React App
+    × displays intro text (8 ms)
+    × displays posts fetched from API (4 ms)
+    × should display loading state by default (2 ms)
+    × should display posts after fetching from API (2 ms)
+
+  ● React App › displays intro text
+
+    ReferenceError: cy is not defined
+
+      1 | describe('React App', () => {
+      2 |   beforeEach(() => {
+    > 3 |     cy.visit('http://localhost:8081'); // or wherever your app is running
+        |     ^
+      4 |   });
+      5 | 
+      6 |   it('displays intro text', () => {
+
+      at Object.<anonymous> (cypress/integration/tests/test.spec.js:3:5)
+      at processTicksAndRejections (node:internal/process/task_queues:105:5)
+
+  ● React App › displays intro text
+
+    ReferenceError: cy is not defined
+
+       5 | 
+       6 |   it('displays intro text', () => {
+    >  7 |     cy.get('.intro-text').should('contain', 'Below Contains A title and Body gotten froma random API, Please take your time to Review');
+         |     ^
+       8 |   });
+       9 | 
+      10 |   it('displays posts fetched from API', () => {
+
+      at Object.<anonymous> (cypress/integration/tests/test.spec.js:7:5)
+      at processTicksAndRejections (node:internal/process/task_queues:105:5)
+
+  ● React App › displays posts fetched from API
+
+    ReferenceError: cy is not defined
+
+      1 | describe('React App', () => {
+      2 |   beforeEach(() => {
+    > 3 |     cy.visit('http://localhost:8081'); // or wherever your app is running
+        |     ^
+      4 |   });
+      5 | 
+      6 |   it('displays intro text', () => {
+
+      at Object.<anonymous> (cypress/integration/tests/test.spec.js:3:5)
+      at processTicksAndRejections (node:internal/process/task_queues:105:5)
+
+  ● React App › displays posts fetched from API
+
+    ReferenceError: cy is not defined
+
+      10 |   it('displays posts fetched from API', () => {
+      11 |     // Wait for API to load
+    > 12 |     cy.get('[data-testid="post-item"]').should('have.length.greaterThan', 0);
+         |     ^
+      13 |   });
+      14 | 
+      15 |   it('should display loading state by default', () => {
+
+      at Object.<anonymous> (cypress/integration/tests/test.spec.js:12:5)
+      at processTicksAndRejections (node:internal/process/task_queues:105:5)
+
+  ● React App › should display loading state by default
+
+    ReferenceError: cy is not defined
+
+      1 | describe('React App', () => {
+      2 |   beforeEach(() => {
+    > 3 |     cy.visit('http://localhost:8081'); // or wherever your app is running
+        |     ^
+      4 |   });
+      5 | 
+      6 |   it('displays intro text', () => {
+
+      at Object.<anonymous> (cypress/integration/tests/test.spec.js:3:5)
+      at processTicksAndRejections (node:internal/process/task_queues:105:5)
+
+  ● React App › should display loading state by default
+
+    ReferenceError: cy is not defined
+
+      15 |   it('should display loading state by default', () => {
+      16 |     // This test expects to see the loading state immediately when the page loads
+    > 17 |     cy.get('[data-testid="loading"]').should('have.length', 1);
+         |     ^
+      18 |   });
+      19 | 
+      20 |   it('should display posts after fetching from API', () => {
+
+      at Object.<anonymous> (cypress/integration/tests/test.spec.js:17:5)
+      at processTicksAndRejections (node:internal/process/task_queues:105:5)
+
+  ● React App › should display posts after fetching from API
+
+    ReferenceError: cy is not defined
+
+      1 | describe('React App', () => {
+      2 |   beforeEach(() => {
+    > 3 |     cy.visit('http://localhost:8081'); // or wherever your app is running
+        |     ^
+      4 |   });
+      5 | 
+      6 |   it('displays intro text', () => {
+
+      at Object.<anonymous> (cypress/integration/tests/test.spec.js:3:5)
+      at processTicksAndRejections (node:internal/process/task_queues:105:5)
+
+  ● React App › should display posts after fetching from API
+
+    ReferenceError: cy is not defined
+
+      19 | 
+      20 |   it('should display posts after fetching from API', () => {
+    > 21 |     cy.get('[data-testid="post-item"]').should('have.length', 6);
+         |     ^
+      22 |   });
+      23 | });
+
+      at Object.<anonymous> (cypress/integration/tests/test.spec.js:21:5)
+      at processTicksAndRejections (node:internal/process/task_queues:105:5)
+
+Test Suites: 1 failed, 1 total
+Tests:       4 failed, 4 total
+Snapshots:   0 total
+Time:        16.243 s
+Ran all test suites.
