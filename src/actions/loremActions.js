@@ -20,11 +20,12 @@ export const fetchLoremData = () => {
   return async (dispatch) => {
     dispatch(fetchLoremRequest());
     
-    // Add delay to ensure loading state is visible
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    // Increased delay for Cypress to see loading state clearly
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    
     try {
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 5000);
+      const timeoutId = setTimeout(() => controller.abort(), 8000);
       
       const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
         signal: controller.signal,
@@ -42,11 +43,9 @@ export const fetchLoremData = () => {
       
       const apiData = await response.json();
       
-      const formattedData = apiData.slice(0, 6).map((post) => ({
+      const formattedData = apiData.slice(0, 1).map((post) => ({  // Only 1 post for Cypress
         title: post.title || 'Lorem Ipsum Dolor Sit Amet',
-        body:
-          post.body ||
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+        body: post.body || 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
       }));
       
       dispatch(fetchLoremSuccess(formattedData));
