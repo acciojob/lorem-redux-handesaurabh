@@ -18,7 +18,7 @@ const App = () => {
         <h4 className="intro-text">
           Below Contains A title and Body gotten froma random API, Please take your time to Review
         </h4>
-        
+
         {error ? (
           <div data-testid="error" className="error-text">
             Error: {error}
@@ -26,7 +26,9 @@ const App = () => {
         ) : (
           <ul className="grid-container">
             <li className="grid-item" data-testid="post-item">
-               {loading ? '' : (data && data.length > 0 ? data[0].id : '')}
+              <p data-testid="post-id">
+                {loading ? '' : (data && data.length > 0 ? data[0].id : '')}
+              </p>
               <p className="title" data-testid="post-title">
                 <span className="label">Title :</span>
                 {loading ? 'Loading tiltes' : (data && data.length > 0 ? data[0].title : '')}
