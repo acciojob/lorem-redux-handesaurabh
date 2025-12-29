@@ -19,17 +19,24 @@ const App = () => {
           Below Contains A title and Body gotten froma random API, Please take your time to Review
         </h4>
         
-        {loading ? (
-          <h4 data-testid="loading" className="loading-text">
-            Loading posts...
-          </h4>
-        ) : error ? (
+        {error ? (
           <div data-testid="error" className="error-text">
             Error: {error}
           </div>
         ) : (
           <ul className="grid-container">
-            {(data && data.length > 0 ? data : []).slice(0, 1).map((post, index) => (
+            {loading ? (
+              <li className="grid-item" data-testid="post-item">
+                <p className="title" data-testid="post-title">
+                  <span className="label">Title :</span>
+                  Loading tiltes
+                </p>
+                <p className="body" data-testid="post-body">
+                  <span className="label">Body :</span>
+                  Loading bodies
+                </p>
+              </li>
+            ) : (data && data.length > 0 ? data : []).slice(0, 1).map((post, index) => (
               <li key={index} className="grid-item" data-testid="post-item">
                 <p className="title" data-testid="post-title">
                   <span className="label">Title :</span>
