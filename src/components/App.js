@@ -36,7 +36,7 @@ const App = () => {
               </p>
               <p className="body" data-testid="post-body">
                 <span className="label">Body :</span>
-                {loading ? 'Loading Body' : (data && data.length > 0 ? data[0].body : '')}
+                {loading ? 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto' : (data && data.length > 0 ? data[0].body : '')}
               </p>
             </li>
           </ul>
