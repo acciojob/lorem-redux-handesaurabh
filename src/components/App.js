@@ -32,7 +32,7 @@ const App = () => {
               </p>
               <p className="body" data-testid="post-body">
                 <span className="label">Body :</span>
-                {loading ? 'Loading bodies' : (data && data.length > 0 ? data[0].body : '')}
+                {loading ? 'Loading Body' : (data && data.length > 0 ? data[0].body : '')}
               </p>
             </li>
           </ul>
