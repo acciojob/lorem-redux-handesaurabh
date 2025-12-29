@@ -7,17 +7,21 @@ const App = () => {
   const dispatch = useDispatch();
   const { loading, data, error } = useSelector(state => state.lorem);
   
-  // Initially assume we're loading until first request is made
-  const [initialLoad, setInitialLoad] = React.useState(true);
+  // Initially assume we're loading
+  const [isLoading, setIsLoading] = React.useState(true);
 
   useEffect(() => {
     dispatch(fetchLoremData());
-    // After request is made, no longer in initial load state
-    setInitialLoad(false);
+    // This will be updated by Redux when the state changes
   }, [dispatch]);
 
-  // Show loading if currently loading OR if in initial load state
-  const shouldShowLoading = loading || (initialLoad && data.length === 0);
+  // Update local loading state when Redux loading state changes
+  React.useEffect(() => {
+    setIsLoading(loading);
+  }, [loading]);
+
+  // Show loading if currently loading
+  const shouldShowLoading = isLoading;
 
   return (
     <div className="page">
