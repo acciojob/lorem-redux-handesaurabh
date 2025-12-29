@@ -23,33 +23,18 @@ const App = () => {
           <div data-testid="error" className="error-text">
             Error: {error}
           </div>
-        ) : loading ? (
+        ) : (
           <ul className="grid-container">
             <li className="grid-item" data-testid="post-item">
               <p className="title" data-testid="post-title">
                 <span className="label">Title :</span>
-                Loading tiltes
+                {loading ? 'Loading tiltes' : (data && data.length > 0 ? data[0].title : '')}
               </p>
               <p className="body" data-testid="post-body">
                 <span className="label">Body :</span>
-                Loading bodies
+                {loading ? 'Loading bodies' : (data && data.length > 0 ? data[0].body : '')}
               </p>
             </li>
-          </ul>
-        ) : (
-          <ul className="grid-container">
-            {(data && data.length > 0 ? data : []).slice(0, 1).map((post, index) => (
-              <li key={`post-${index}`} className="grid-item" data-testid="post-item">
-                <p className="title" data-testid="post-title">
-                  <span className="label">Title :</span>
-                  {post.title}
-                </p>
-                <p className="body" data-testid="post-body">
-                  <span className="label">Body :</span>
-                  {post.body}
-                </p>
-              </li>
-            ))}
           </ul>
         )}
       </div>
