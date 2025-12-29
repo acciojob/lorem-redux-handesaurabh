@@ -18,10 +18,10 @@ export const fetchLoremFailure = (error) => ({
 
 export const fetchLoremData = () => {
   return async (dispatch) => {
-    // Add delay BEFORE dispatching request to ensure loading state is visible
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
     dispatch(fetchLoremRequest());
+    
+    // Add delay to ensure loading state is visible
+    await new Promise(resolve => setTimeout(resolve, 1000));
     try {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 5000);
