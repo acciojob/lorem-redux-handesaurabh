@@ -18,33 +18,49 @@ const App = () => {
         <h4 className="intro-text">
           Below Contains A title and Body gotten froma random API, Please take your time to Review
         </h4>
-
-        {loading ? (
+        
+        {/* ADD loading element for Test 3 */}
+        {loading && (
           <h4 data-testid="loading" className="loading-text">
             Loading posts...
           </h4>
-        ) : error ? (
+        )}
+        
+        {error ? (
           <div data-testid="error" className="error-text">
             Error: {error}
           </div>
         ) : (
           <ul className="grid-container">
-            {(data || []).slice(0, 6).map((post, index) => (
-              <li key={post.id || index} className="grid-item" data-testid="post-item">
-                <p className="id" data-testid="post-id">
-                  <span className="label">ID :</span>
-                  {post.id}
-                </p>
+            {loading ? (
+              <li className="grid-item" data-testid="post-item">
                 <p className="title" data-testid="post-title">
                   <span className="label">Title :</span>
-                  {post.title}
+                  Loading titles
                 </p>
                 <p className="body" data-testid="post-body">
                   <span className="label">Body :</span>
-                  {post.body}
+                  Loading Body
                 </p>
               </li>
-            ))}
+            ) : (
+              (data || []).slice(0, 6).map((post) => (  // FIXED: slice(0, 6)
+                <li key={post.id} className="grid-item" data-testid="post-item">
+                  <p className="id" data-testid="post-id">
+                    <span className="label">ID :</span>  {/* FIXED: Added label */}
+                    {post.id}
+                  </p>
+                  <p className="title" data-testid="post-title">
+                    <span className="label">Title :</span>
+                    {post.title}
+                  </p>
+                  <p className="body" data-testid="post-body">
+                    <span className="label">Body :</span>
+                    {post.body}
+                  </p>
+                </li>
+              ))
+            )}
           </ul>
         )}
       </div>
