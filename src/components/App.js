@@ -25,29 +25,35 @@ const App = () => {
           </div>
         ) : (
           <ul className="grid-container">
-            {loading ? (
-              <li className="grid-item" data-testid="post-item">
-                <p className="title" data-testid="post-title">
-                  <span className="label">Title :</span>
-                  Loading tiltes
-                </p>
-                <p className="body" data-testid="post-body">
-                  <span className="label">Body :</span>
-                  Loading bodies
-                </p>
-              </li>
-            ) : (data && data.length > 0 ? data : []).slice(0, 1).map((post, index) => (
-              <li key={index} className="grid-item" data-testid="post-item">
-                <p className="title" data-testid="post-title">
-                  <span className="label">Title :</span>
-                  {post.title}
-                </p>
-                <p className="body" data-testid="post-body">
-                  <span className="label">Body :</span>
-                  {post.body}
-                </p>
-              </li>
-            ))}
+            {(() => {
+              if (loading) {
+                return (
+                  <li className="grid-item" data-testid="post-item">
+                    <p className="title" data-testid="post-title">
+                      <span className="label">Title :</span>
+                      Loading tiltes
+                    </p>
+                    <p className="body" data-testid="post-body">
+                      <span className="label">Body :</span>
+                      Loading bodies
+                    </p>
+                  </li>
+                );
+              } else {
+                return (data && data.length > 0 ? data : []).slice(0, 1).map((post, index) => (
+                  <li key={index} className="grid-item" data-testid="post-item">
+                    <p className="title" data-testid="post-title">
+                      <span className="label">Title :</span>
+                      {post.title}
+                    </p>
+                    <p className="body" data-testid="post-body">
+                      <span className="label">Body :</span>
+                      {post.body}
+                    </p>
+                  </li>
+                ));
+              }
+            })()}
           </ul>
         )}
       </div>
