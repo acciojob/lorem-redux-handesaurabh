@@ -6,13 +6,18 @@ import '../styles/App.css';
 const App = () => {
   const dispatch = useDispatch();
   const { loading, data, error } = useSelector(state => state.lorem);
+  
+  // Initially assume we're loading until first request is made
+  const [initialLoad, setInitialLoad] = React.useState(true);
 
   useEffect(() => {
     dispatch(fetchLoremData());
+    // After request is made, no longer in initial load state
+    setInitialLoad(false);
   }, [dispatch]);
 
-  // Show loading if currently loading
-  const shouldShowLoading = loading;
+  // Show loading if currently loading OR if in initial load state
+  const shouldShowLoading = loading || (initialLoad && data.length === 0);
 
   return (
     <div className="page">
