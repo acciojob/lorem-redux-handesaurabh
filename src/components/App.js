@@ -26,7 +26,7 @@ const App = () => {
         ) : (
           <ul className="grid-container">
             <li className="grid-item" data-testid="post-item">
-              <p className="index">1</p>
+               {loading ? '' : (data && data.length > 0 ? data[0].id : '')}
               <p className="title" data-testid="post-title">
                 <span className="label">Title :</span>
                 {loading ? 'Loading tiltes' : (data && data.length > 0 ? data[0].title : '')}
