@@ -11,6 +11,9 @@ const App = () => {
     dispatch(fetchLoremData());
   }, [dispatch]);
 
+  // Show loading if currently loading
+  const shouldShowLoading = loading;
+
   return (
     <div className="page">
       <div className="card">
@@ -21,7 +24,7 @@ const App = () => {
           Below Contains A title and Body gotten froma random API, Please take your time to Review
         </h4>
         
-        {loading && data.length === 0 ? (
+        {shouldShowLoading ? (
           <h4 data-testid="loading" className="loading-text">
             Loading posts...
           </h4>
