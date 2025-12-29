@@ -32,7 +32,7 @@ const App = () => {
               </p>
               <p className="title" data-testid="post-title">
                 <span className="label">Title :</span>
-                {loading ? 'Loading tiltes' : (data && data.length > 0 ? data[0].title : '')}
+                {loading ? 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit' : (data && data.length > 0 ? data[0].title : '')}
               </p>
               <p className="body" data-testid="post-body">
                 <span className="label">Body :</span>
