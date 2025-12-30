@@ -28,15 +28,15 @@ const App = () => {
             <li className="grid-item" data-testid="post-item">
               <p className="id" data-testid="post-id">
                 <span className="label">ID :</span>
-                <span>{loading ? 'Loading...' : (data && data.length > 0 ? data[0].id : '')}</span>
+                {loading ? 'Loading...' : (data && data.length > 0 ? data[0].id : '')}
               </p>
               <p className="title" data-testid="post-title">
                 <span className="label">Title :</span>
-                <span>{loading ? 'Loading tiltes' : (data && data.length > 0 ? data[0].title : '')}</span>
+                {loading ? 'Loading tiltes' : (data && data.length > 0 ? data[0].title : '')}
               </p>
               <p className="body" data-testid="post-body">
                 <span className="label">Body :</span>
-                <span>{loading ? 'Loading Body' : (data && data.length > 0 ? data[0].body : '')}</span>
+                {loading ? 'Loading Body' : (data && data.length > 0 ? data[0].body : '')}
               </p>
             </li>
           </ul>
