@@ -32,11 +32,11 @@ const App = () => {
               </p>
               <p className="title" data-testid="post-title">
                 <span className="label">Title :</span>
-                {loading ? 'Loading tiltes' : (data && data.length > 0 ? data[0].title : '')}
+                <span>{loading ? 'Loading tiltes' : (data && data.length > 0 ? data[0].title : '')}</span>
               </p>
               <p className="body" data-testid="post-body">
                 <span className="label">Body :</span>
-                {loading ? 'Loading Body' : (data && data.length > 0 ? data[0].body : '')}
+                <span>{loading ? 'Loading Body' : (data && data.length > 0 ? data[0].body : '')}</span>
               </p>
             </li>
           </ul>
