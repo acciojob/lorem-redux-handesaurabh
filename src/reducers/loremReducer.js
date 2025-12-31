@@ -5,7 +5,7 @@ import {
 } from '../actions/loremActions';
 
 const initialState = {
-  loading: false,
+  loading: true,
   data: [],
   error: ''
 };

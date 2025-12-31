@@ -1,6 +1,6 @@
 describe('React App', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:8081'); // or wherever your app is running
+    cy.visit('http://localhost:8080'); // or wherever your app is running
   });
 
   it('displays intro text', () => {

@@ -19,26 +19,32 @@ const App = () => {
           Below Contains A title and Body gotten froma random API, Please take your time to Review
         </h4>
 
+        {loading && (
+          <div data-testid="loading">Loading...</div>
+        )}
+
         {error ? (
           <div data-testid="error" className="error-text">
             Error: {error}
           </div>
         ) : (
           <ul className="grid-container">
-            <li className="grid-item" data-testid="post-item">
-              <p className="id" data-testid="post-id">
-                <span className="label">ID :</span>
-                {loading ? 'Loading...' : (data && data.length > 0 ? data[0].id : '')}
-              </p>
-              <p className="title" data-testid="post-title">
-                <span className="label">Title :</span>
-                {loading ? 'Loading tiltes' : (data && data.length > 0 ? data[0].title : '')}
-              </p>
-              <p className="body" data-testid="post-body">
-                <span className="label">Body :</span>
-                {loading ? 'Loading Body' : (data && data.length > 0 ? data[0].body : '')}
-              </p>
-            </li>
+            {data && data.map((post, index) => (
+              <li key={post.id} className="grid-item" data-testid="post-item">
+                <p className="id" data-testid="post-id">
+                  <span className="label">ID :</span>
+                  {post.id}
+                </p>
+                <p className="title" data-testid="post-title">
+                  <span className="label">Title :</span>
+                  {post.title}
+                </p>
+                <p className="body" data-testid="post-body">
+                  <span className="label">Body :</span>
+                  {post.body}
+                </p>
+              </li>
+            ))}
           </ul>
         )}
       </div>
