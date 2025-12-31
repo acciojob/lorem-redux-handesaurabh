@@ -19,23 +19,30 @@ const App = () => {
           Below Contains A title and Body gotten froma random API, Please take your time to Review
         </h4>
 
-        {/* Loading State */}
-        {loading && (
-          <div data-testid="loading">Loading...</div>
-        )}
-
-        {/* Error State */}
-        {!loading && error && (
-          <div data-testid="error" className="error-text">
-            Error: {error}
-          </div>
-        )}
-
-        {/* Success State */}
-        {!loading && !error && (
-          <ul className="grid-container">
-            {data.map((post) => (
-              <li key={post.id} className="grid-item" data-testid="post-item">
+        <ul className="grid-container">
+          {loading
+            ? Array.from({ length: 6 }, (_, index) => (
+              <li
+                key={index + 1}
+                className="grid-item"
+                data-testid={index === 0 ? "loading" : undefined}
+              >
+                <p className="id">
+                  <span className="label">ID :</span>
+                  Loading...
+                </p>
+                <p className="title">
+                  <span className="label">Title :</span>
+                  Loading...
+                </p>
+                <p className="body">
+                  <span className="label">Body :</span>
+                  Loading...
+                </p>
+              </li>
+            ))
+            : data.map((post, index) => (
+              <li key={index + 1} className="grid-item" data-testid="post-item">
                 <p className="id" data-testid="post-id">
                   <span className="label">ID :</span>
                   {post.id}
@@ -50,8 +57,7 @@ const App = () => {
                 </p>
               </li>
             ))}
-          </ul>
-        )}
+        </ul>
       </div>
     </div>
   );
