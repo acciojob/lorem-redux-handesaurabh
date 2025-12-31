@@ -5,8 +5,8 @@ import {
 } from '../actions/loremActions';
 
 const initialState = {
-  loading: true,
-  data: [],
+  loading: true, // ensures Cypress sees loading first
+  data: [],      // no posts rendered initially
   error: ''
 };
 
@@ -16,6 +16,7 @@ const loremReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
+        data: [],  // ensure posts hidden while loading
         error: ''
       };
     case FETCH_LOREM_SUCCESS:
