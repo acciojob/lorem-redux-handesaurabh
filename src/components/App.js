@@ -19,32 +19,45 @@ const App = () => {
           Below Contains A title and Body gotten froma random API, Please take your time to Review
         </h4>
 
-        {loading && (
-          <div data-testid="loading">Loading...</div>
-        )}
-
         {error ? (
           <div data-testid="error" className="error-text">
             Error: {error}
           </div>
         ) : (
           <ul className="grid-container">
-            {data && data.map((post, index) => (
-              <li key={post.id} className="grid-item" data-testid="post-item">
-                <p className="id" data-testid="post-id">
+            {loading ? (
+              <li className="grid-item" data-testid="loading">
+                <p className="id">
                   <span className="label">ID :</span>
-                  {post.id}
+                  Loading...
                 </p>
-                <p className="title" data-testid="post-title">
+                <p className="title">
                   <span className="label">Title :</span>
-                  {post.title}
+                  Loading...
                 </p>
-                <p className="body" data-testid="post-body">
+                <p className="body">
                   <span className="label">Body :</span>
-                  {post.body}
+                  Loading...
                 </p>
               </li>
-            ))}
+            ) : (
+              data && data.map((post, index) => (
+                <li key={post.id} className="grid-item" data-testid="post-item">
+                  <p className="id" data-testid="post-id">
+                    <span className="label">ID :</span>
+                    {post.id}
+                  </p>
+                  <p className="title" data-testid="post-title">
+                    <span className="label">Title :</span>
+                    {post.title}
+                  </p>
+                  <p className="body" data-testid="post-body">
+                    <span className="label">Body :</span>
+                    {post.body}
+                  </p>
+                </li>
+              ))
+            )}
           </ul>
         )}
       </div>
