@@ -14,10 +14,12 @@ describe('React App', () => {
 
   it('should display loading state by default', () => {
     // This test expects to see the loading state immediately when the page loads
-    cy.get('[data-testid="loading"]').should('have.length', 1);
+    cy.get('[data-testid="loading"]').should('be.visible');
   });
 
   it('should display posts after fetching from API', () => {
+    // Wait for loading to complete and posts to appear
+    cy.get('[data-testid="loading"]').should('not.exist');
     cy.get('[data-testid="post-item"]').should('have.length', 6);
   });
 });
