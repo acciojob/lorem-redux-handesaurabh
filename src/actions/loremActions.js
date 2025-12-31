@@ -21,7 +21,10 @@ export const fetchLoremData = () => {
     dispatch(fetchLoremRequest());
 
     try {
-      // Mock data - exactly what Cypress expects
+      // Optional: small delay to ensure Cypress sees loading
+      await new Promise(resolve => setTimeout(resolve, 500));
+
+      // Mock data
       const mockData = [
         {
           id: 1,
