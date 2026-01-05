@@ -33,39 +33,25 @@ const App = () => {
 
         {/* Posts Grid */}
         <ul className="grid-container">
-          {data.length > 0 ? (
-            data.map((post) => (
-              <li key={post.id} className="grid-item" data-testid="post-item">
+          {Array.from({ length: 6 }, (_, index) => {
+            const post = data[index];
+            return (
+              <li key={index} className="grid-item" data-testid="post-item">
                 <p className="id" data-testid="post-id">
                   <span className="label">ID :</span>
-                  {post.id}
+                  {post ? post.id : (loading ? 'Loading...' : 'No data')}
                 </p>
                 <p className="title" data-testid="post-title">
                   <span className="label">Title :</span>
-                  {post.title}
+                  {post ? post.title : (loading ? 'Loading titles' : 'No data')}
                 </p>
                 <p className="body" data-testid="post-body">
                   <span className="label">Body :</span>
-                  {post.body}
+                  {post ? post.body : (loading ? 'Loading body' : 'No data')}
                 </p>
               </li>
-            ))
-          ) : (
-            <li className="grid-item" data-testid="post-item">
-              <p className="id" data-testid="post-id">
-                <span className="label">ID :</span>
-                {loading ? 'Loading...' : 'No data'}
-              </p>
-              <p className="title" data-testid="post-title">
-                <span className="label">Title :</span>
-                {loading ? 'Loading titles' : 'No data'}
-              </p>
-              <p className="body" data-testid="post-body">
-                <span className="label">Body :</span>
-                {loading ? 'Loading body' : 'No data'}
-              </p>
-            </li>
-          )}
+            );
+          })}
         </ul>
       </div>
     </div>
