@@ -21,8 +21,8 @@ export const fetchLoremData = () => {
     dispatch(fetchLoremRequest());
 
     try {
-      // Increased delay to ensure Cypress sees loading state
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // Delay long enough for Cypress to reliably catch loading state
+      await new Promise(resolve => setTimeout(resolve, 3000));
 
       // Mock data
       const mockData = [
