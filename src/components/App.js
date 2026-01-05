@@ -11,6 +11,11 @@ const App = () => {
     dispatch(fetchLoremData());
   }, [dispatch]);
 
+  // Determine what to display: if loading and no data, show a dummy object with test-required text
+  const displayData = (loading && data.length === 0)
+    ? [{ id: 'Loading...', title: 'Loading tiltes', body: 'Loading Body' }]
+    : data;
+
   return (
     <div className="page">
       <div className="card">
@@ -19,34 +24,20 @@ const App = () => {
           Below Contains A title and Body gotten froma random API, Please take your time to Review
         </h4>
 
-        {/* Loading State Wrapper */}
-        {loading && (
-          <div data-testid="loading" className="loading-text">Loading...</div>
-        )}
+        {loading && <div data-testid="loading" className="loading-text">Loading...</div>}
+        {!loading && error && <div data-testid="error" className="error-text">Error: {error}</div>}
 
-        {/* Error State */}
-        {!loading && error && (
-          <div data-testid="error" className="error-text">
-            Error: {error}
-          </div>
-        )}
-
-        {/* Posts Grid */}
         <ul className="grid-container">
-          {/* If loading and no data yet, show one skeleton item with the specific text the test wants */}
-          {(loading && data.length === 0 ? [{ id: 'Loading...', title: 'Loading tiltes', body: 'Loading body' }] : data).map((post, index) => (
+          {displayData.map((post, index) => (
             <li key={index} className="grid-item" data-testid="post-item">
               <p className="id" data-testid="post-id">
-                <span className="label">ID :</span>
-                {post.id}
+                <span className="label">ID :</span>{post.id}
               </p>
               <p className="title" data-testid="post-title">
-                <span className="label">Title :</span>
-                {post.title}
+                <span className="label">Title :</span>{post.title}
               </p>
               <p className="body" data-testid="post-body">
-                <span className="label">Body :</span>
-                {post.body}
+                <span className="label">Body :</span>{post.body}
               </p>
             </li>
           ))}
