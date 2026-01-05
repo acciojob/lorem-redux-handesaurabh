@@ -19,16 +19,19 @@ const App = () => {
           Below Contains A title and Body gotten froma random API, Please take your time to Review
         </h4>
 
+        {/* Loading State */}
         {loading && (
-          <div data-testid="loading">Loading...</div>
+          <div data-testid="loading" className="loading-text">Loading...</div>
         )}
 
+        {/* Error State */}
         {!loading && error && (
           <div data-testid="error" className="error-text">
             Error: {error}
           </div>
         )}
 
+        {/* Success State */}
         {!loading && !error && data.length > 0 && (
           <ul className="grid-container">
             {data.map((post) => (
