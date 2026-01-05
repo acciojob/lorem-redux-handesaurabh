@@ -33,7 +33,7 @@ const App = () => {
 
         {/* Posts Grid */}
         <ul className="grid-container">
-          {Array.from({ length: 6 }, (_, index) => {
+          {Array.from({ length: data.length > 0 ? data.length : 1 }, (_, index) => {
             const post = data[index];
             return (
               <li key={index} className="grid-item" data-testid="post-item">
