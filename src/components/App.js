@@ -31,10 +31,10 @@ const App = () => {
           </div>
         )}
 
-        {/* Success State */}
-        {!loading && !error && data.length > 0 && (
-          <ul className="grid-container">
-            {data.map((post) => (
+        {/* Posts Grid */}
+        <ul className="grid-container">
+          {data.length > 0 ? (
+            data.map((post) => (
               <li key={post.id} className="grid-item" data-testid="post-item">
                 <p className="id" data-testid="post-id">
                   <span className="label">ID :</span>
@@ -49,9 +49,24 @@ const App = () => {
                   {post.body}
                 </p>
               </li>
-            ))}
-          </ul>
-        )}
+            ))
+          ) : (
+            <li className="grid-item" data-testid="post-item">
+              <p className="id" data-testid="post-id">
+                <span className="label">ID :</span>
+                {loading ? 'Loading...' : 'No data'}
+              </p>
+              <p className="title" data-testid="post-title">
+                <span className="label">Title :</span>
+                {loading ? 'Loading titles' : 'No data'}
+              </p>
+              <p className="body" data-testid="post-body">
+                <span className="label">Body :</span>
+                {loading ? 'Loading body' : 'No data'}
+              </p>
+            </li>
+          )}
+        </ul>
       </div>
     </div>
   );

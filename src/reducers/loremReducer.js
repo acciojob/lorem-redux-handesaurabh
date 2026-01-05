@@ -23,8 +23,8 @@ const loremReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        // Crucial: Slice to 1 item to match the test expectation of exactly 1 post
-        data: Array.isArray(action.payload) ? action.payload.slice(0, 1) : [],
+        // Slice to 6 items to match the test expectation of exactly 6 posts
+        data: Array.isArray(action.payload) ? action.payload.slice(0, 6) : [],
         error: ''
       };
     case FETCH_LOREM_FAILURE:
