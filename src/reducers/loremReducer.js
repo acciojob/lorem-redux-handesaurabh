@@ -5,7 +5,7 @@ import {
 } from '../actions/loremActions';
 
 const initialState = {
-  loading: false,
+  loading: true,
   data: [],
   error: ''
 };
@@ -14,18 +14,21 @@ const loremReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_LOREM_REQUEST:
       return {
+        ...state,
         loading: true,
         data: [],
         error: ''
       };
     case FETCH_LOREM_SUCCESS:
       return {
+        ...state,
         loading: false,
         data: Array.isArray(action.payload) ? action.payload : [],
         error: ''
       };
     case FETCH_LOREM_FAILURE:
       return {
+        ...state,
         loading: false,
         data: [],
         error: action.payload || 'Failed to fetch data'
