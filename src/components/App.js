@@ -21,7 +21,7 @@ const App = () => {
 
         {/* Loading State */}
         {loading && (
-          <div data-testid="loading" className="loading-text">Loading tiltes</div>
+          <div data-testid="loading" className="loading-text">Loading...</div>
         )}
 
         {/* Error State */}
