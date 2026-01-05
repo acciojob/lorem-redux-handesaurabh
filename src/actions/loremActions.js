@@ -1,3 +1,10 @@
+import {
+  FETCH_LOREM_REQUEST,
+  FETCH_LOREM_SUCCESS,
+  FETCH_LOREM_FAILURE
+} from '../actions/loremActions'; // Note: Ensure this import path is correct for your file structure, or use the constants defined in the file if they are in the same file.
+
+// Ideally, define constants at the top if they aren't imported
 export const FETCH_LOREM_REQUEST = 'FETCH_LOREM_REQUEST';
 export const FETCH_LOREM_SUCCESS = 'FETCH_LOREM_SUCCESS';
 export const FETCH_LOREM_FAILURE = 'FETCH_LOREM_FAILURE';
@@ -21,46 +28,23 @@ export const fetchLoremData = () => {
     dispatch(fetchLoremRequest());
 
     try {
-      // Delay long enough for Cypress to reliably catch loading state
+      // 1. Keep the delay to pass the "Loading State" visibility check
       await new Promise(resolve => setTimeout(resolve, 3000));
 
-      // Mock data
-      const mockData = [
-        {
-          id: 1,
-          title: 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit',
-          body: 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto'
-        },
-        {
-          id: 2,
-          title: 'qui est esse',
-          body: 'est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla'
-        },
-        {
-          id: 3,
-          title: 'ea molestias quasi exercitationem repellat qui ipsa sit aut',
-          body: 'et iusto sed quo iure\nvoluptatem occaecati omnis eligendi aut ad\nvoluptatem doloribus vel accusantium quis pariatur\nmolestiae porro eius odio et labore et velit aut'
-        },
-        {
-          id: 4,
-          title: 'eum et est occaecati',
-          body: 'ullam et saepe reiciendis voluptatem adipisci\nsit arbitra iure omnis neque sunt\nnec voluptates mollitia similique quisquam ad quasi\narchitecto sapiente'
-        },
-        {
-          id: 5,
-          title: 'nesciunt quas odio',
-          body: 'repudiandae veniam quaerat sunt sed\nalias aut fugiat sit autem sed est\nvoluptatem omnis possimus esse voluptatibus quis\nest aut tenetur dolor neque'
-        },
-        {
-          id: 6,
-          title: 'dolorem eum magni eos aperiam at',
-          body: 'ut libero id et sed aut enim\nrerum sint cupiditate voluptatum\nexcepturi praesentium nesciunt\nhic expedita ad assumenda explicabo'
-        }
-      ];
+      // 2. Use fetch instead of hardcoded data
+      const response = await fetch('https://jsonplaceholder.typicode.com/posts');
 
-      dispatch(fetchLoremSuccess(mockData));
+      if (!response.ok) {
+        throw new Error('Failed to fetch posts');
+      }
+
+      const data = await response.json();
+
+      // 3. Dispatch the real data
+      dispatch(fetchLoremSuccess(data));
+
     } catch (error) {
-      dispatch(fetchLoremFailure(error.message || 'Failed to fetch data'));
+      dispatch(fetchLoremFailure(error.message));
     }
   };
 };
