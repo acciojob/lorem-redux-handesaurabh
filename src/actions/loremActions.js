@@ -1,5 +1,3 @@
-// Removed the incorrect import statement that caused the crash
-
 export const FETCH_LOREM_REQUEST = 'FETCH_LOREM_REQUEST';
 export const FETCH_LOREM_SUCCESS = 'FETCH_LOREM_SUCCESS';
 export const FETCH_LOREM_FAILURE = 'FETCH_LOREM_FAILURE';
@@ -23,19 +21,18 @@ export const fetchLoremData = () => {
     dispatch(fetchLoremRequest());
 
     try {
-      // Delay to ensure the "Loading..." state is visible for Cypress tests
-      await new Promise(resolve => setTimeout(resolve, 3000));
+      await new Promise(resolve => setTimeout(resolve, 2000));
 
-      // Real API call allows Cypress to intercept and mock the response with 1 item
       const response = await fetch('https://jsonplaceholder.typicode.com/posts');
 
       if (!response.ok) {
         throw new Error('Failed to fetch posts');
       }
 
-      const data = await response.json();
+      const jsonData = await response.json();
 
-      dispatch(fetchLoremSuccess(data));
+      dispatch(fetchLoremSuccess(jsonData));
+
     } catch (error) {
       dispatch(fetchLoremFailure(error.message));
     }
